@@ -163,6 +163,16 @@ def main():
         # """
         # execute_sql_query(spark, DELTA_PATH, query5)
 
+
+        # Display Delta table history
+        print("Table history:")
+        spark.sql(f"DESCRIBE HISTORY delta.`/app/data/delta/employees`").show(truncate=False)
+
+        # Display data from a json file
+        print("JSON query:")
+        spark.sql(f"SELECT * FROM json.`/app/data/json/countries.json`").show(truncate=False)
+
+
     except Exception as e:
         print(f"Error: {e}")
     finally:
